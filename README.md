@@ -1,4 +1,9 @@
 # OP-TEE Sample Applications
+# Differences to upstream
+This git contains altered versions of the original examples found at https://github.com/linaro-swg/optee_examples. The example applications acipher, aes and hello_world contain some of the example files of mbedtls/psa.
+These example files contain slight changes, with comments about them and contain wrappers, which allows this altered mbedtls/psa code to run on a native OP-TEE environment.
+
+# Original ReadMe
 This git contains source code for sample host and Trusted Application that can
 be used directly in the OP-TEE project.
 
