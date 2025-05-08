@@ -51,10 +51,14 @@ int main(void)
 
 	res = TEEC_OpenSession(&ctx, &sess, &uuid,
 			       TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
-	TEEC_InvokeCommand(&sess, TA_AES_CMD_CIPHER,
+	if (res != TEEC_SUCCESS)
+		errx(1, "TEEC_OpenSession failed with code 0x%x", res);
+	res = TEEC_InvokeCommand(&sess, TA_AES_CMD_CIPHER,
 				 &op, &err_origin);
+	if (res != TEEC_SUCCESS)
+		errx(1, "TEEC_InvokeCommand failed with code 0x%x", res);
 	TEEC_CloseSession(&sess);
-
+	printf("PSA hash with wrapper ran successfully.\n");
 	TEEC_FinalizeContext(&ctx);
 
 	return 0;
